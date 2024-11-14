@@ -1,0 +1,16 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+CREATE TABLE files (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  path VARCHAR(255) NOT NULL
+);
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO items (name) VALUES ('Item 1'), ('Item 2'), ('Item 3');
