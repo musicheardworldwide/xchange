@@ -1,0 +1,25 @@
+# Use a specific Node.js version with Alpine Linux
+FROM node:20
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install --production && npm cache clean --force
+
+# Rebuild bcrypt from source
+RUN npm rebuild bcrypt --build-from-source
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 5000
+
+# Command to run the application
+CMD ["node", "index.js"]
+
+
+
